@@ -1,33 +1,33 @@
-let contlikeal = document.querySelectorAll('.element__container_like');
+let contlikeal = document.querySelectorAll('.element__container-like');
 
 function blacklike() {
-    contlikeal[0].classList.toggle('element__container_like-black');
-    contlikeal[0].classList.toggle('element__container_like');
+    contlikeal[0].classList.toggle('element__container-like-black');
+    contlikeal[0].classList.toggle('element__container-like');
 }
 
 function blacklike1() {
-    contlikeal[1].classList.toggle('element__container_like-black');
-    contlikeal[1].classList.toggle('element__container_like');
+    contlikeal[1].classList.toggle('element__container-like_black');
+    contlikeal[1].classList.toggle('element__container-like');
 }
 
 function blacklike2() {
-    contlikeal[2].classList.toggle('element__container_like-black');
-    contlikeal[2].classList.toggle('element__container_like');
+    contlikeal[2].classList.toggle('element__container-like_black');
+    contlikeal[2].classList.toggle('element__container-like');
 }
 
 function blacklike3() {
-    contlikeal[3].classList.toggle('element__container_like-black');
-    contlikeal[3].classList.toggle('element__container_like');
+    contlikeal[3].classList.toggle('element__container-like_black');
+    contlikeal[3].classList.toggle('element__container-like');
 }
 
 function blacklike4() {
-    contlikeal[4].classList.toggle('element__container_like-black');
-    contlikeal[4].classList.toggle('element__container_like');
+    contlikeal[4].classList.toggle('element__container-like_black');
+    contlikeal[4].classList.toggle('element__container-like');
 }
 
 function blacklike5() {
-    contlikeal[5].classList.toggle('element__container_like-black');
-    contlikeal[5].classList.toggle('element__container_like');
+    contlikeal[5].classList.toggle('element__container-like_black');
+    contlikeal[5].classList.toggle('element__container-like');
 }
 
 contlikeal[0].addEventListener('click', blacklike);
