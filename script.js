@@ -1,7 +1,7 @@
 let contlikeal = document.querySelectorAll('.element__container-like');
 
 function blacklike() {
-    contlikeal[0].classList.toggle('element__container-like-black');
+    contlikeal[0].classList.toggle('element__container-like_black');
     contlikeal[0].classList.toggle('element__container-like');
 }
 
