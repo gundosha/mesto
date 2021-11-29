@@ -1,0 +1,25 @@
+.profile__title {
+    margin: 0;
+    font-weight: 500;
+    font-size: 42px;
+    line-height: 48px;
+    margin-right: 18px;
+}
+
+@media screen and (max-width: 330px) {
+    .profile__title {
+        font-size: 27px;
+        line-height: 33px;
+        margin-left: 65px;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .popup__title {
+        font-size: 18px;
+        line-height: 22px;
+        margin: 25px 22px 75px 22px;
+    }
+}
+
+;

@@ -1,0 +1,11 @@
+.element__container_like {
+    cursor: pointer;
+    background-image: url(./image/like.svg);
+    width: 22px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.element__container_like:hover {
+    opacity: .5;
+}
