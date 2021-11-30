@@ -58,7 +58,7 @@ let profilename = document.querySelector('.profile__title');
 let profilejob = document.querySelector('.profile__subtitle');
 let jobinput = document.querySelector('.popup__input_subtitle');
 let nameinput = document.querySelector('.popup__input_title');
-let forminput = document.querySelector('.form__input')
+let forminput = document.querySelector('.popup__form_input')
 let nameinp = profilename.textContent;
 let jobinp = profilejob.textContent;
 

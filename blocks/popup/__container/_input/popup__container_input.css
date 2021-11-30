@@ -1,11 +1,11 @@
-.input__container {
+.popup__container_input {
     height: 27px;
     margin: 0 36px 30px 36px;
     border-bottom: grey solid 1.5px;
 }
 
 @media screen and (max-width: 550px) {
-    .input__container {
+    .popup__container_input {
         margin: 0 22px 30px 22px;
     }
 }
