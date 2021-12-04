@@ -2,5 +2,12 @@
     margin: auto;
     margin-top: 45px;
     max-width: 880px;
-    border-bottom: solid 1px #545454;
+    border-bottom: solid 1px rgba(84, 84, 84, .7);
+}
+
+@media screen and (max-width: 320px) {
+    .header {
+        height: 56px;
+        margin-top: 28px;
+    }
 }

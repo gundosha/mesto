@@ -1,12 +1,14 @@
 let popup = document.querySelector('.popup');
-let popupcont = document.querySelector('.popup__container');
+
 let popupclose = document.querySelector('.popup__close');
-let popupsave = document.querySelector('.popup__button');
+
 let popupopen = document.querySelector('.profile__edit-button');
 
 function openpop() {
     /*popup.classList.toggle('popup'); */
     popup.classList.toggle('popup_active');
+    nameinput.value = nameinp;
+    jobinput.value = jobinp;
 
 
 }
@@ -24,8 +26,7 @@ let forminput = document.querySelector('.popup__form-input')
 let nameinp = profilename.textContent;
 let jobinp = profilejob.textContent;
 
-nameinput.value = nameinp;
-jobinput.value = jobinp;
+
 
 function formSubmitHandler(evt) {
     evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.

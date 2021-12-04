@@ -1,6 +1,6 @@
 .profile__info {
     display: flex;
-    max-width: 336px;
+    max-width: 500px;
     flex-wrap: wrap;
     align-self: center;
 }
