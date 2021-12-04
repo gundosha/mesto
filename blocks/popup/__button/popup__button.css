@@ -8,6 +8,7 @@
     margin: 18px 36px 37px 36px;
     border: none;
     cursor: pointer;
+    padding: 0;
 }
 
 .popup__button:hover {

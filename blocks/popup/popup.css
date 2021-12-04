@@ -8,5 +8,6 @@
     opacity: 0;
     transition: 0.5s all;
     margin: auto;
-    display: none;
+    display: flex;
+    pointer-events: none;
 }

@@ -1,7 +1,7 @@
 .element__container-like_black {
-    cursor: pointer;
     background-image: url(../../../../image/Union.svg);
-    width: 22px;
-    background-repeat: no-repeat;
-    background-position: center;
+}
+
+.element__container-like_black:hover {
+    opacity: 1;
 }

@@ -4,6 +4,8 @@
     width: 22px;
     background-repeat: no-repeat;
     background-position: center;
+    border: none;
+    background-color: transparent;
 }
 
 .element__container-like:hover {

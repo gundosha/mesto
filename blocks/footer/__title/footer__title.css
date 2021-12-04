@@ -2,11 +2,19 @@
     font-weight: normal;
     font-size: 18px;
     line-height: 22px;
-    color: #545454;
+    color: rgba(84, 84, 84, .7);
+    margin: 0;
 }
 
 @media screen and (max-width: 880px) {
     .footer__title {
         margin-left: 19px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .footer__title {
+        font-size: 14px;
+        line-height: 17px;
     }
 }

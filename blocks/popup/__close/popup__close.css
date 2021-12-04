@@ -5,8 +5,14 @@
     cursor: pointer;
 }
 
+.popup__close:hover {
+    opacity: .6;
+}
+
 @media screen and (max-width: 550px) {
     .popup__close {
         margin: -64px 250px 32px;
+        width: 20px;
+        height: 20px;
     }
 }
