@@ -4,17 +4,22 @@ let popupclose = document.querySelector('.popup__close');
 
 let popupopen = document.querySelector('.profile__edit-button');
 
+
 function openpop() {
     /*popup.classList.toggle('popup'); */
-    popup.classList.toggle('popup_active');
+    popup.classList.add('popup_active');
     nameinput.value = nameinp;
     jobinput.value = jobinp;
 
 
 }
 
+function closepop() {
+    popup.classList.remove('popup_active')
+}
+
 popupopen.addEventListener('click', openpop);
-popupclose.addEventListener('click', openpop);
+popupclose.addEventListener('click', closepop);
 
 // const text = $elem.textContent;
 
@@ -37,7 +42,7 @@ function formSubmitHandler(evt) {
     profilename.textContent = nameinput.value
     profilejob.textContent = jobinput.value
 
-    openpop()
+    closepop()
 
 
     // Получите значение полей jobInput и nameInput из свойства value
@@ -45,5 +50,7 @@ function formSubmitHandler(evt) {
     // Выберите элементы, куда должны быть вставлены значения полей
     // Вставьте новые значения с помощью textContent
 };
+
+
 
 forminput.addEventListener('submit', formSubmitHandler);
