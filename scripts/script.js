@@ -36,7 +36,7 @@ const initialCards = [{
     evt.target.classList.toggle('element__container-like_black');
 }); */
 
-const popimage = document.querySelector('.popup__bg-image');
+const popimage = document.querySelector('.popup-bg_image');
 const popuptxt = document.querySelector('.popup__text');
 const bgimage = document.querySelector('.popup__bg_image');
 
