@@ -1,4 +1,4 @@
-let popup = document.querySelector('.popup');
+let opup = document.querySelector('.popup');
 let popupclose = document.querySelector('.popup__close');
 let popupopen = document.querySelector('.profile__edit-button');
 const elements = document.querySelector('.elements');
@@ -117,7 +117,7 @@ function formSubmitHandler(evt) {
 forminput.addEventListener('submit', formSubmitHandler);
 let popupadd = document.querySelector('.profile__add-button')
 const popupcard = document.querySelector('.popup-card');
-const popupcardclose = document.querySelector('.popup__card_close');
+const popupcardclose = document.querySelector('.popup-card_close');
 
 function popcardopen() {
     popupcard.classList.toggle('popup__card_active')
