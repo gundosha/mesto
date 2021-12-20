@@ -1,7 +1,7 @@
 .element__container-like {
     cursor: pointer;
     background-image: url(../../../image/like.svg);
-    width: 22px;
+    width: 24px;
     background-repeat: no-repeat;
     background-position: center;
     border: none;

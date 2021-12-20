@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="./pages/index.css">
+
     <title>Место</title>
 </head>
 
@@ -29,60 +30,7 @@
                 <button type="button" class="profile__add-button"><img class="profile__image-addbutton" src="./image/Vectorplus.svg" alt="кнопка добавления фотографии" ></button>
             </section>
             <section class="elements">
-                <div class="element">
-                    <img src="./image/1pic.png" alt="Карачаевск" class="element__image">
-                    <div class="element__text">
-                        <h2 class="element__title">Карачаевск</h2>
-                        <button type="button" class="element__container-like"></button>
-                    </div>
-                </div>
-                <div class="element">
-                    <div class="element">
-                        <img src="./image/4pic.png" alt="эльбрус" class="element__image">
-                        <div class="element__text">
-                            <h2 class="element__title">Гора Эльбрус</h2>
-                            <button type="button" class="element__container-like"></button>
 
-
-                        </div>
-                    </div>
-
-                </div>
-                <div class="element">
-                    <img src="./image/6pic.png" alt="домай" class="element__image">
-                    <div class="element__text">
-                        <h2 class="element__title">Домбай</h2>
-                        <button type="button" class="element__container-like"></button>
-
-
-                    </div>
-                </div>
-                <div class="element">
-                    <img src="./image/3pic.png" alt="эльбрус" class="element__image">
-                    <div class="element__text">
-                        <h2 class="element__title">Гора Эльбрус</h2>
-                        <button type="button" class="element__container-like"></button>
-
-
-                    </div>
-                </div>
-                <div class="element">
-                    <img src="./image/5pic.png" alt="домбай" class="element__image">
-                    <div class="element__text">
-                        <h2 class="element__title">Домбай</h2>
-                        <button type="button" class="element__container-like"></button>
-
-
-                    </div>
-                </div>
-                <div class="element">
-                    <img src="./image/2pic.png" alt="карачаевск" class="element__image">
-                    <div class="element__text">
-                        <h2 class="element__title">Карачаево-Что аа</h2>
-                        <button type="button" class="element__container-like"></button>
-
-                    </div>
-                </div>
             </section>
             <div class="popup">
                 <div class="popup__container">
@@ -95,13 +43,48 @@
                     </form>
                 </div>
             </div>
-        </main>
-
-
-        <footer class="footer">
-            <p class='footer__title'>© 2020 Mesto Russia</p>
-        </footer>
+            </form>
     </div>
+    </div>
+
+    <div class="popup__card">
+        <div class="popup__container">
+            <button type="button" class="popup__button-close popup__card-button_close"><img src="./image/CloseIcon.svg" alt="кнопка закрытия" class="popup__close popup__card_close"></button>
+            <h3 class="popup__title">Новое место</h3>
+            <form class="popup__form popup__form-card">
+                <input type="text" class="popup__input popup__input_type_name" placeholder="Название" />
+                <input type="text" class="popup__input popup__input_type_link" placeholder="Ссылка на картинку" />
+                <button class='popup__button' type="submit">Создать</button>
+
+            </form>
+        </div>
+    </div>
+
+    <div class="popup__bg-image">
+        <div class="popup-bg__container">
+            <button type="button" class="popup__image_close"></button>
+            <img src="" alt="попап картинка" class="popup__bg_image">
+            <p class="popup__text"></p>
+        </div>
+    </div>
+    </main>
+
+
+    <footer class="footer">
+        <p class='footer__title'>© 2020 Mesto Russia</p>
+    </footer>
+    </div>
+    <template class="element__template">
+        <div class="element"> 
+            <button type="button" class="element__delete-image"></button>
+            <img src="" alt="Карачаевск" class="element__image">
+
+          <div class="element__text">
+              <h2 class="element__title"></h2>
+              <button type="button" class="element__container-like"></button>
+           </div>
+        </div>
+    </template>
     <script src="./scripts/script.js"></script>
 </body>
 

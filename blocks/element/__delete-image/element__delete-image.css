@@ -1,0 +1,15 @@
+.element__delete-image {
+    background-image: url(../../../image/delete1.svg);
+    height: 19px;
+    width: 18px;
+    background-color: transparent;
+    border: none;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+}
+
+.element__delete-image:hover {
+    opacity: 0.5;
+}

@@ -1,0 +1,4 @@
+.popup__bg-image_active {
+    opacity: 1;
+    pointer-events: all;
+}
