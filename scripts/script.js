@@ -69,7 +69,7 @@ function da() {
 }
 da()
 
-const btnclose = document.querySelector('.popup-bg__image_close')
+const btnclose = document.querySelector('.popup-bg__close')
 
 btnclose.addEventListener('click', function() {
     popimage.classList.remove('popup__bg-image_active')
