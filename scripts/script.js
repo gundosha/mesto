@@ -38,7 +38,7 @@ const initialCards = [{
 
 const popimage = document.querySelector('.popup-bg');
 const popuptxt = document.querySelector('.popup__text');
-const bgimage = document.querySelector('.popup__bg_image');
+const bgimage = document.querySelector('.popup-bg_image');
 
 function da() {
     initialCards.forEach(function(element) {
