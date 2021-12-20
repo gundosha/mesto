@@ -38,7 +38,7 @@ const initialCards = [{
 
 const popimage = document.querySelector('.popup-bg');
 const popuptxt = document.querySelector('.popup__text');
-const bgimage = document.querySelector('.popup-bg__image');
+const bgimage = document.querySelector('.popup-bg_image');
 
 function da() {
     initialCards.forEach(function(element) {
@@ -69,7 +69,7 @@ function da() {
 }
 da()
 
-const btnclose = document.querySelector('.popup__image_close')
+const btnclose = document.querySelector('.popup-bg__image_close')
 
 btnclose.addEventListener('click', function() {
     popimage.classList.remove('popup__bg-image_active')
