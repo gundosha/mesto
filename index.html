@@ -24,17 +24,20 @@
                 </div>
                 <div class="profile__info">
                     <h1 class="profile__title">Жак-Ив Кусто</h1>
-                    <button type="button" class="profile__edit-button"><img class="profile__image-editbutton" src="./image/EditButton.svg" alt="кнопка редактирования"></button>
+                    <button type="button" class="profile__edit-button"><img class="profile__image-editbutton"
+                            src="./image/EditButton.svg" alt="кнопка редактирования"></button>
                     <p class="profile__subtitle">Исследователь океана</p>
                 </div>
-                <button type="button" class="profile__add-button"><img class="profile__image-addbutton" src="./image/Vectorplus.svg" alt="кнопка добавления фотографии" ></button>
+                <button type="button" class="profile__add-button"><img class="profile__image-addbutton"
+                        src="./image/Vectorplus.svg" alt="кнопка добавления фотографии"></button>
             </section>
             <section class="elements">
 
             </section>
             <div class="popup">
                 <div class="popup__container">
-                    <button type="button" class="popup__button-close"><img src="./image/CloseIcon.svg" alt="кнопка закрытия" class="popup__close"></button>
+                    <button type="button" class="popup__button-close"><img src="./image/CloseIcon.svg"
+                            alt="кнопка закрытия" class="popup__close"></button>
                     <h2 class="popup__title">Редактировать профиль</h2>
                     <form name="form popup" class="popup__form-input">
                         <input type="text" class="popup__input popup__input_type_title">
@@ -43,48 +46,50 @@
                     </form>
                 </div>
             </div>
-            </form>
-    </div>
-    </div>
-
-    <div class="popup__card">
-        <div class="popup__container">
-            <button type="button" class="popup__button-close popup__card-button_close"><img src="./image/CloseIcon.svg" alt="кнопка закрытия" class="popup__close popup__card_close"></button>
-            <h3 class="popup__title">Новое место</h3>
-            <form class="popup__form popup__form-card">
-                <input type="text" class="popup__input popup__input_type_name" placeholder="Название" />
-                <input type="text" class="popup__input popup__input_type_link" placeholder="Ссылка на картинку" />
-                <button class='popup__button' type="submit">Создать</button>
-
-            </form>
-        </div>
-    </div>
-
-    <div class="popup__bg-image">
-        <div class="popup-bg__container">
-            <button type="button" class="popup__image_close"></button>
-            <img src="" alt="попап картинка" class="popup__bg_image">
-            <p class="popup__text"></p>
-        </div>
-    </div>
-    </main>
 
 
-    <footer class="footer">
-        <p class='footer__title'>© 2020 Mesto Russia</p>
-    </footer>
+
+
+            <div class="popup__card">
+                <div class="popup__container">
+                    <button type="button" class="popup__button-close popup__card-button_close"><img src="./image/CloseIcon.svg"
+                    alt="кнопка закрытия" class="popup__close popup__card_close"></button>
+                    <h3 class="popup__title">Новое место</h3>
+                    <form class="popup__form popup__form-card">
+                        <input type="text" class="popup__input popup__input_type_name" placeholder="Название" />
+                        <input type="text" class="popup__input popup__input_type_link" placeholder="Ссылка на картинку" />
+                        <button class='popup__button' type="submit">Создать</button>
+
+                    </form>
+                </div>
+            </div>
+
+            <div class="popup__bg-image">
+                <div class="popup-bg__container">
+                    <button type="button" class="popup__image_close"></button>
+                    <img src="" alt="попап картинка" class="popup__bg_image">
+                    <p class="popup__text"></p>
+                </div>
+            </div>
+        </main>
+
+
+        <footer class="footer">
+            <p class='footer__title'>© 2020 Mesto Russia</p>
+        </footer>
     </div>
     <template class="element__template">
-        <div class="element"> 
+        <div class="element">
             <button type="button" class="element__delete-image"></button>
             <img src="" alt="Карачаевск" class="element__image">
 
-          <div class="element__text">
-              <h2 class="element__title"></h2>
-              <button type="button" class="element__container-like"></button>
-           </div>
+            <div class="element__text">
+                <h2 class="element__title"></h2>
+                <button type="button" class="element__container-like"></button>
+            </div>
         </div>
     </template>
+
     <script src="./scripts/script.js"></script>
 </body>
 
