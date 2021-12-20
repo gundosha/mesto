@@ -116,7 +116,7 @@ function formSubmitHandler(evt) {
 
 forminput.addEventListener('submit', formSubmitHandler);
 let popupadd = document.querySelector('.profile__add-button')
-const popupcard = document.querySelector('.popup__card');
+const popupcard = document.querySelector('.popup-card');
 const popupcardclose = document.querySelector('.popup__card_close');
 
 function popcardopen() {
