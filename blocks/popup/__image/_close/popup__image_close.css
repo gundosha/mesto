@@ -10,6 +10,11 @@
     margin-top: -40px;
 }
 
+.popup__image_close:hover {
+    opacity: .5;
+    cursor: pointer;
+}
+
 @media screen and (max-width: 560px) {
     .popup__image_close {
         margin-right: 0;
