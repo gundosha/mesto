@@ -1,4 +1,5 @@
 const popup = document.querySelector('.popup');
+const popupEdit = document.querySelector('.popup__edit')
 let popupclose = document.querySelector('.popup__close');
 let popupopen = document.querySelector('.profile__edit-button');
 const elements = document.querySelector('.elements');
@@ -82,7 +83,7 @@ btnclose.addEventListener('click', function() {
 })
 
 function openPopup() {
-    popup.classList.add('popup_active');
+    popupEdit.classList.add('popup_active');
     nameinput.value = nameAddinput;
     jobinput.value = jobAddinput;
 
