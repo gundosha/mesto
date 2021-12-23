@@ -59,7 +59,7 @@
 @import url(../blocks/popup/__bg-image/_active/popup__bg-image_active.css);
 @import url(../blocks/popup/__bg/_image/popup__bg_image.css);
 @import url(../blocks/popup/__image/_close/popup__image_close.css);
-@import url(../blocks/popup/__container/_type/_image/popup__container_type_image.css);
+@import url(../blocks/popup/__container-image/popup__container-image.css);
 @import url(../blocks/popup/__text/popup__text.css);
 
 /* PROFILE */
