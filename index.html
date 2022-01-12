@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <link rel="stylesheet" href="./pages/index.css">
 
     <title>Место</title>
@@ -39,10 +38,18 @@
                     <button type="button" class="popup__button-close"><img src="./image/CloseIcon.svg"
                             alt="кнопка закрытия" class="popup__close"></button>
                     <h2 class="popup__title">Редактировать профиль</h2>
-                    <form name="form popup" class="popup__form-input">
-                        <input type="text" class="popup__input popup__input_type_title">
-                        <input type="text" class="popup__input popup__input_type_subtitle">
-                        <button class='popup__button' type="submit">Сохранить</button>
+                    <fieldset class="form__set">
+                        <form name="form popup" class="popup__form popup__form-input" novalidate>
+                            <label class="form__field">
+                            <input id='popup__input_title' type="text" minlength="2" maxlength="40" required class="popup__input popup__input_type_title">
+                            <span class="popup__input_error popup__input_title_error"></span>
+                        </label>
+                            <label class="form__field">
+                            <input id='popup__input_subtitle' type="text" minlength="2" maxlength="200" required class="popup__input popup__input_type_subtitle">
+                            <span class="popup__input_error popup__input_subtitle_error"></span>
+                        </label>
+                            <button class='popup__button' type="submit">Сохранить</button>
+                    </fieldset>
                     </form>
                 </div>
             </div>
@@ -55,11 +62,18 @@
                     <button type="button" class="popup__button-close"><img src="./image/CloseIcon.svg"
                     alt="кнопка закрытия" class="popup__close popup__close-card"></button>
                     <h3 class="popup__title">Новое место</h3>
-                    <form class="popup__form popup__form-card">
-                        <input type="text" class="popup__input popup__input_type_name" placeholder="Название" />
-                        <input type="text" class="popup__input popup__input_type_link" placeholder="Ссылка на картинку" />
-                        <button class='popup__button' type="submit">Создать</button>
-
+                    <form class="popup__form popup__form-card" novalidate>
+                        <fieldset class="form__set">
+                            <label class="form__field">
+                                <input id='popup__input_name' type="text" minlength="2" maxlength="30" required class="popup__input popup__input_type_name" placeholder="Название" />
+                                <span class="popup__input_error popup__input_name_error"></span>
+                            </label>
+                            <label class="form__field">
+                                <input id='popup__input_link' type="url" required class="popup__input popup__input_type_link" placeholder="Ссылка на картинку" />
+                                <span class="popup__input_error popup__input_link_error"></span>
+                             </label>
+                            <button class='popup__button' type="submit">Создать</button>
+                        </fieldset>
                     </form>
                 </div>
             </div>
@@ -91,6 +105,7 @@
     </template>
 
     <script src="./scripts/script.js"></script>
+    <script src="./scripts/validate.js"></script>
 </body>
 
 </html>

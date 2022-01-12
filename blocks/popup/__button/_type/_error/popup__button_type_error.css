@@ -1,0 +1,7 @@
+.popup__button_type_error {
+    border: 1px solid #000;
+    color: #000;
+    background: none;
+    pointer-events: none;
+    opacity: .2;
+}
