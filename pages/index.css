@@ -66,6 +66,7 @@
 @import url(../blocks/popup/__close-image/popup__close-image.css);
 @import url(../blocks/popup/__container-image/popup__container-image.css);
 @import url(../blocks/popup/__text/popup__text.css);
+@import url(../blocks/popup/__form-set/popup__form-set.css);
 
 /* PROFILE */
 
