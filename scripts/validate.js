@@ -53,7 +53,14 @@ function enableValidation() {
         setEventListeners(formElement);
     });
 }
-enableValidation();
+enableValidation({
+    formSelector: '.popup__form',
+    inputSelector: '.popup__input',
+    submitButtonSelector: '.popup__button',
+    inactiveButtonClass: 'popup__button_disabled',
+    inputErrorClass: 'popup__input_type_error',
+    errorClass: 'popup__error_visible'
+});
 
 function hasInvalidInput(inputList) {
     return inputList.some((inputElement) => {
@@ -63,51 +70,10 @@ function hasInvalidInput(inputList) {
 
 function toggleButtonState(inputList, buttonElement) {
     if (hasInvalidInput(inputList)) {
-        buttonElement.classList.add('popup__button_type_error');
+        buttonElement.disabled = true
+        buttonElement.classList.add('popup__button_disabled');
     } else {
-        buttonElement.classList.remove('popup__button_type_error');
+        buttonElement.disabled = false
+        buttonElement.classList.remove('popup__button_disabled');
     }
 }
-
-
-const popupTypeEdit = document.querySelector('.popup_type_edit');
-const popupTypeCard = document.querySelector('.popup_type_card')
-const popupTypeImage = document.querySelector('.popup_type_image')
-
-
-// Обойдём все элементы полученной коллекции
-document.addEventListener('click', (e) => {
-    if (e.target === popupTypeEdit) {
-        closePopup(popupTypeEdit)
-    }
-});
-
-document.addEventListener('click', (e) => {
-    if (e.target === popupTypeCard) {
-        closePopup(popupTypeCard)
-    }
-});
-
-document.addEventListener('click', (e) => {
-    if (e.target === popupTypeImage) {
-        closePopup(popupTypeImage)
-    }
-});
-
-document.addEventListener('keydown', (e) => {
-    if (e.keyCode == 27) {
-        closePopup(popupTypeEdit)
-    }
-});
-
-document.addEventListener('keydown', (e) => {
-    if (e.keyCode == 27) {
-        closePopup(popupTypeCard)
-    }
-});
-
-document.addEventListener('keydown', (e) => {
-    if (e.keyCode == 27) {
-        closePopup(popupTypeImage)
-    }
-});
