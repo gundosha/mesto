@@ -48,7 +48,7 @@
                                 <input id='input-subtitle' type="text" minlength="2" maxlength="200" required class="popup__input popup__input_type_subtitle" placeholder="Вид деятельности">
                                 <span class="popup__input-error input-subtitle-error"></span>
                             </label>
-                            <button class='popup__button' type="submit">Сохранить</button>
+                            <button class='popup__button popup__button_disabled' type="submit">Сохранить</button>
                         </fieldset>
                     </form>
                 </div>
@@ -72,7 +72,7 @@
                                 <input id='input-link' type="url" required class="popup__input popup__input_type_link" placeholder="Ссылка на картинку" />
                                 <span class="popup__input-error input-link-error"></span>
                              </label>
-                            <button class='popup__button' type="submit">Создать</button>
+                            <button class='popup__button popup__button_create popup__button_disabled' type="submit">Создать</button>
                         </fieldset>
                     </form>
                 </div>
@@ -103,6 +103,7 @@
             </div>
         </div>
     </template>
+    <script src="./scripts/config.js"></script>
     <script src="./scripts/initial-cards.js"></script>
     <script src="./scripts/validate.js"></script>
     <script src="./scripts/script.js"></script>

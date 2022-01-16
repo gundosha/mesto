@@ -37,11 +37,11 @@ const disableSubmitButton = (buttonElement, inactiveButtonClass) => {
 
 const toggleButtonState = (inputList, buttonElement, validConfig) => {
     if (hasInvalidInput(inputList)) {
+        disableSubmitButton(buttonElement, validConfig.inactiveButtonClass)
         buttonElement.disabled = true
         buttonElement.classList.add(validConfig.inactiveButtonClass);
 
     } else {
-        disableSubmitButton(buttonElement, validConfig.inactiveButtonClass)
         buttonElement.disabled = false
         buttonElement.classList.remove(validConfig.inactiveButtonClass);
     }
@@ -52,7 +52,6 @@ const toggleButtonState = (inputList, buttonElement, validConfig) => {
 const setEventListeners = (formElement, validConfig) => {
     const inputList = Array.from(formElement.querySelectorAll(validConfig.inputSelector));
     const buttonElement = formElement.querySelector(validConfig.submitButtonSelector);
-    toggleButtonState(inputList, buttonElement, validConfig)
     inputList.forEach((inputElement) => {
         inputElement.addEventListener('input', function() {
             checkInputValidity(formElement, inputElement, validConfig);
@@ -68,7 +67,6 @@ function enableValidation(config) {
     const formList = Array.from(document.querySelectorAll(config.formSelector));
     formList.forEach((formElement) => {
         formElement.addEventListener('submit', (evt) => {
-            disableSubmitButton(config.submitButtonSelector, config.inactiveButtonClass)
             evt.preventDefault();
         });
 

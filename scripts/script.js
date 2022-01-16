@@ -25,7 +25,7 @@ const popupTypeEdit = document.querySelector('.popup_type_edit');
 const popupTypeCard = document.querySelector('.popup_type_card')
 const popupTypeImage = document.querySelector('.popup_type_image')
 const escKey = 27;
-
+const ButtonElementCreate = document.querySelector('.popup__button_create')
 
 // первые 6 карточек
 function createCard(name, imageLink) {
@@ -150,7 +150,6 @@ function submitEditProfileForm(evt) {
     evt.preventDefault();
     profileName.textContent = nameInput.value
     profileJob.textContent = jobInput.value
-
     closeEditPopup()
 
 };
@@ -161,6 +160,7 @@ function submitAddCardForm(evt) {
     evt.preventDefault();
     const newCard = createCard(popupCardName.value, popupCardLink.value);
     elements.prepend(newCard);
+    disableSubmitButton(ButtonElementCreate, validationConfig.inactiveButtonClass)
     closePopupCard()
 }
 
