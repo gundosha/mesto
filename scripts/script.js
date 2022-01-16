@@ -26,6 +26,7 @@ const popupTypeCard = document.querySelector('.popup_type_card')
 const popupTypeImage = document.querySelector('.popup_type_image')
 const escKey = 27;
 
+
 // первые 6 карточек
 function createCard(name, imageLink) {
 
@@ -39,9 +40,11 @@ function createCard(name, imageLink) {
         openCard(name, imageLink)
     })
 
+
+
     cardsElement.querySelector('.element__title').textContent = name;
     elementImage.src = imageLink
-    elementImage.alt = 'первые 6 карточек карточек'
+    elementImage.alt = name
     return cardsElement
 }
 // активация лайка
@@ -57,7 +60,7 @@ function openCard(title, link) {
     openPopup(popupImage)
     popupTxt.textContent = title;
     bgImage.src = link;
-    bgImage.alt = 'открытая карточка'
+    bgImage.alt = title
 }
 initialCards.forEach(function(element) {
     const elCard = createCard(element.name, element.link)
@@ -65,36 +68,56 @@ initialCards.forEach(function(element) {
 
 });
 
-function openPopup(popup) {
-    popup.classList.add('popup_active');
-
+function closeByOverlayClick(popup) {
     document.addEventListener('click', (e) => {
         if (e.target === popup) {
             closePopup(popup)
         }
     });
+}
 
+function closeByEscClick(popup) {
     document.addEventListener('keydown', (e) => {
 
-        if (e.keyCode == escKey) {
+        if (e.keyCode === escKey) {
+            closePopup(popup)
+
+        }
+
+    })
+}
+
+function closeByEsc(popup) {
+    document.removeEventListener('keydown', (e) => {
+
+        if (e.keyCode === escKey) {
             closePopup(popup)
 
         }
 
     });
+}
+
+function closeByOverLay(popup) {
+    document.removeEventListener('click', (e) => {
+        if (e.target === popup) {
+            closePopup(popup)
+        }
+    });
+}
+
+function openPopup(popup) {
+    popup.classList.add('popup_active');
+    closeByOverlayClick(popup)
+    closeByEscClick(popup)
+
 
 }
 
 function closePopup(popup) {
     popup.classList.remove('popup_active');
-    document.removeEventListener('keydown', (e) => {
-
-        if (e.keyCode == escKey) {
-            closePopup(popup)
-
-        }
-
-    });
+    closeByOverLay(popup)
+    closeByEsc(popup)
 }
 
 function openEditPopup() {
@@ -111,6 +134,7 @@ function openPopupCard() {
     openPopup(popupCard)
     popupCardName.value = '';
     popupCardLink.value = '';
+
 }
 
 function closePopupCard() {
@@ -136,19 +160,9 @@ function submitEditProfileForm(evt) {
 function submitAddCardForm(evt) {
     evt.preventDefault();
     const newCard = createCard(popupCardName.value, popupCardLink.value);
-
     elements.prepend(newCard);
-
     closePopupCard()
-
 }
-
-
-
-
-
-
-
 
 formInputCard.addEventListener('submit', submitAddCardForm);
 
