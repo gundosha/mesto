@@ -40,8 +40,6 @@ function createCard(name, imageLink) {
         openCard(name, imageLink)
     })
 
-
-
     cardsElement.querySelector('.element__title').textContent = name;
     elementImage.src = imageLink
     elementImage.alt = name

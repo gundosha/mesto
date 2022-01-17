@@ -7,6 +7,7 @@ const validationConfig = {
     errorClass: 'popup__input-error_active'
 }
 
+
 const showInputError = (formElement, inputElement, errorMessage, validConfig) => {
     const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
     inputElement.classList.add(validConfig.inputErrorClass);
@@ -34,20 +35,15 @@ const disableSubmitButton = (buttonElement, inactiveButtonClass) => {
     buttonElement.disabled = true;
 }
 
-
 const toggleButtonState = (inputList, buttonElement, validConfig) => {
     if (hasInvalidInput(inputList)) {
         disableSubmitButton(buttonElement, validConfig.inactiveButtonClass)
-        buttonElement.disabled = true
-        buttonElement.classList.add(validConfig.inactiveButtonClass);
 
     } else {
         buttonElement.disabled = false
         buttonElement.classList.remove(validConfig.inactiveButtonClass);
     }
 }
-
-
 
 const setEventListeners = (formElement, validConfig) => {
     const inputList = Array.from(formElement.querySelectorAll(validConfig.inputSelector));
@@ -60,8 +56,6 @@ const setEventListeners = (formElement, validConfig) => {
     });
 
 };
-
-
 
 function enableValidation(config) {
     const formList = Array.from(document.querySelectorAll(config.formSelector));
@@ -85,5 +79,3 @@ function hasInvalidInput(inputList) {
         return !inputElement.validity.valid;
     });
 }
-
-console.log(validationConfig.submitButtonSelector)
