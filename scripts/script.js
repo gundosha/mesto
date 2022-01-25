@@ -1,3 +1,8 @@
+import initialCards from "./initial-cards.js";
+import Card from "./Card.js";
+import FormValidator from "./FormValidator.js";
+
+
 const popup = document.querySelector('.popup');
 const popupEdit = document.querySelector('.popup_type_edit')
 const popupClose = document.querySelector('.popup__close');
@@ -27,31 +32,13 @@ const popupTypeImage = document.querySelector('.popup_type_image')
 const escKey = 27;
 const ButtonElementCreate = document.querySelector('.popup__button_create')
 
-// первые 6 карточек
-function createCard(name, imageLink) {
-
-    const cardsElement = elTemplate.cloneNode(true);
-    const elementImage = cardsElement.querySelector('.element__image');
-    cardsElement.querySelector('.element__container-like').addEventListener('click', toggleLike);
-
-    cardsElement.querySelector('.element__delete-image').addEventListener('click', deleteCard);
-
-    elementImage.addEventListener('click', function() {
-        openCard(name, imageLink)
-    })
-
-    cardsElement.querySelector('.element__title').textContent = name;
-    elementImage.src = imageLink
-    elementImage.alt = name
-    return cardsElement
-}
-// активация лайка
-function toggleLike(evt) {
-    evt.target.classList.toggle('element__container-like_black')
-}
-// удаление карточки
-function deleteCard(evt) {
-    evt.target.closest('.element').remove();
+const validationConfig = {
+    formSelector: '.popup__form',
+    inputSelector: '.popup__input',
+    submitButtonSelector: '.popup__button',
+    inactiveButtonClass: 'popup__button_disabled',
+    inputErrorClass: 'popup__input_type_error',
+    errorClass: 'popup__input-error_active'
 }
 
 function openCard(title, link) {
@@ -60,11 +47,24 @@ function openCard(title, link) {
     bgImage.src = link;
     bgImage.alt = title
 }
+
+// первые 6 карточек
+const sec = document.querySelector('.element__template');
+const newCards = new Card('.element__template');
 initialCards.forEach(function(element) {
-    const elCard = createCard(element.name, element.link)
+    const elCard = newCards.createCard(element.name, element.link)
     elements.append(elCard)
 
 });
+
+function submitEditProfileForm(evt) {
+    evt.preventDefault();
+    profileName.textContent = nameInput.value
+    profileJob.textContent = jobInput.value
+    closeEditPopup()
+
+};
+
 
 function closeByOverlayClick(popup) {
     document.addEventListener('click', (e) => {
@@ -144,23 +144,23 @@ buttonClose.addEventListener('click', function() {
     closePopup(popupImage)
 })
 
-function submitEditProfileForm(evt) {
-    evt.preventDefault();
-    profileName.textContent = nameInput.value
-    profileJob.textContent = jobInput.value
-    closeEditPopup()
+const disabledButton = (buttonElement, inactiveButtonClass) => {
+    buttonElement.classList.add(inactiveButtonClass);
+    buttonElement.disabled = true;
+}
 
-};
-
-
-//добавить карточку
 function submitAddCardForm(evt) {
     evt.preventDefault();
-    const newCard = createCard(popupCardName.value, popupCardLink.value);
+    const newCard = newCards.createCard(popupCardName.value, popupCardLink.value);
     elements.prepend(newCard);
-    disableSubmitButton(ButtonElementCreate, validationConfig.inactiveButtonClass)
+    disabledButton(ButtonElementCreate, validationConfig.inactiveButtonClass)
     closePopupCard()
 }
+
+
+
+const formvalid = new FormValidator;
+formvalid.enableValidation(validationConfig, validationConfig.formSelector)
 
 formInputCard.addEventListener('submit', submitAddCardForm);
 
