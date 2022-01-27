@@ -1,5 +1,8 @@
 class Card {
-    constructor(selector) {
+    constructor(selector, openPopup, name, imageLink) {
+        this._name = name;
+        this._imageLink = imageLink;
+        this._openPopup = openPopup;
         this._selector = selector;
     }
 
@@ -9,56 +12,6 @@ class Card {
             .content
             .querySelector('.element')
             .cloneNode(true);
-
-    }
-
-    _closePopup(popup) {
-        popup.classList.remove('popup_active');
-        this._closeByOverLay(popup)
-        this._closeByEsc(popup)
-    }
-
-    _closeByEsc(popup) {
-        document.removeEventListener('keydown', (e) => {
-
-            if (e.keyCode === escKey) {
-                this._closePopup(popup)
-
-            }
-
-        });
-    }
-    _closeByOverLay = (popup) => {
-        document.removeEventListener('click', (e) => {
-            if (e.target === popup) {
-                this._closePopup(popup)
-            }
-        });
-    }
-
-    _closeByOverlayClick(popup) {
-        document.addEventListener('click', (e) => {
-            if (e.target === popup) {
-                this._closePopup(popup)
-            }
-        });
-    }
-
-    _closeByEscClick(popup) {
-        document.addEventListener('keydown', (e) => {
-            const escKey = 27;
-            if (e.keyCode === escKey) {
-                this._closePopup(popup)
-
-            }
-
-        })
-    }
-
-    _openPopup(popup) {
-        popup.classList.add('popup_active');
-        this._closeByOverlayClick(popup)
-        this._closeByEscClick(popup)
 
     }
 
@@ -72,12 +25,7 @@ class Card {
         bgImage.alt = title
     }
 
-
-    createCard(name, imageLink) {
-
-        this._element = this._getTemplate();
-        this._elementImage = this._element.querySelector('.element__image');
-
+    _setEventListeners(_name, _imageLink) {
         this._element.querySelector('.element__container-like').addEventListener('click', (evt) => {
             evt.target.classList.toggle('element__container-like_black')
         });
@@ -87,12 +35,18 @@ class Card {
         });
 
         this._elementImage.addEventListener('click', () => {
-            this._openCard(name, imageLink)
+            this._openCard(_name, _imageLink)
         })
+    }
 
-        this._element.querySelector('.element__title').textContent = name;
-        this._elementImage.src = imageLink
-        this._elementImage.alt = name
+    createCard(_name, _imageLink) {
+
+        this._element = this._getTemplate();
+        this._elementImage = this._element.querySelector('.element__image');
+        this._setEventListeners(_name, _imageLink)
+        this._element.querySelector('.element__title').textContent = _name;
+        this._elementImage.src = _imageLink
+        this._elementImage.alt = _name
         return this._element
     }
 

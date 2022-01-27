@@ -1,7 +1,6 @@
-import initialCards from "./initial-cards.js";
+import initialCards from "./initialCards.js";
 import Card from "./Card.js";
 import FormValidator from "./FormValidator.js";
-
 
 const popup = document.querySelector('.popup');
 const popupEdit = document.querySelector('.popup_type_edit')
@@ -41,19 +40,14 @@ const validationConfig = {
     errorClass: 'popup__input-error_active'
 }
 
-function openCard(title, link) {
-    openPopup(popupImage)
-    popupTxt.textContent = title;
-    bgImage.src = link;
-    bgImage.alt = title
+function generateCard(template, onPopup, name, link) {
+    const newCards = new Card(template, onPopup, name, link);
+    return newCards.createCard(name, link)
 }
 
-// первые 6 карточек
-const sec = document.querySelector('.element__template');
-const newCards = new Card('.element__template');
 initialCards.forEach(function(element) {
-    const elCard = newCards.createCard(element.name, element.link)
-    elements.append(elCard)
+    const elCard = generateCard('.element__template', openPopup, element.name, element.link);
+    elements.append(elCard);
 
 });
 
@@ -66,56 +60,39 @@ function submitEditProfileForm(evt) {
 };
 
 
-function closeByOverlayClick(popup) {
-    document.addEventListener('click', (e) => {
-        if (e.target === popup) {
-            closePopup(popup)
-        }
-    });
+
+function closeByOverlayClick(evt) {
+    const popupOpened = document.querySelector('.popup_active');
+    if (evt.target === popupOpened) {
+        closePopup(popupOpened)
+    }
 }
 
-function closeByEscClick(popup) {
-    document.addEventListener('keydown', (e) => {
 
-        if (e.keyCode === escKey) {
-            closePopup(popup)
 
-        }
 
-    })
+
+function closeByEscClick(evt) {
+    if (evt.key === 'Escape') {
+        const popupOpened = document.querySelector('.popup_active');
+        closePopup(popupOpened)
+    }
+
 }
 
-function closeByEsc(popup) {
-    document.removeEventListener('keydown', (e) => {
-
-        if (e.keyCode === escKey) {
-            closePopup(popup)
-
-        }
-
-    });
-}
-
-function closeByOverLay(popup) {
-    document.removeEventListener('click', (e) => {
-        if (e.target === popup) {
-            closePopup(popup)
-        }
-    });
-}
 
 function openPopup(popup) {
     popup.classList.add('popup_active');
-    closeByOverlayClick(popup)
-    closeByEscClick(popup)
+    document.addEventListener('click', closeByOverlayClick)
+    document.addEventListener('keydown', closeByEscClick)
 
 
 }
 
 function closePopup(popup) {
     popup.classList.remove('popup_active');
-    closeByOverLay(popup)
-    closeByEsc(popup)
+    document.removeEventListener('click', closeByOverlayClick)
+    document.removeEventListener('keydown', closeByEscClick)
 }
 
 function openEditPopup() {
@@ -144,23 +121,22 @@ buttonClose.addEventListener('click', function() {
     closePopup(popupImage)
 })
 
-const disabledButton = (buttonElement, inactiveButtonClass) => {
-    buttonElement.classList.add(inactiveButtonClass);
-    buttonElement.disabled = true;
-}
 
 function submitAddCardForm(evt) {
     evt.preventDefault();
-    const newCard = newCards.createCard(popupCardName.value, popupCardLink.value);
+    const newCard = generateCard('.element__template', openPopup, popupCardName.value, popupCardLink.value);
     elements.prepend(newCard);
-    disabledButton(ButtonElementCreate, validationConfig.inactiveButtonClass)
+    const formValidDisable = new FormValidator(validationConfig, validationConfig.formSelector)
+    formValidDisable.disableSubmitButton(ButtonElementCreate, validationConfig.inactiveButtonClass)
     closePopupCard()
 }
 
 
 
-const formvalid = new FormValidator;
-formvalid.enableValidation(validationConfig, validationConfig.formSelector)
+const formValid = new FormValidator(validationConfig, formInputCard);
+formValid.enableValidation(validationConfig, validationConfig.formSelector)
+const formValidUser = new FormValidator(validationConfig, formInput)
+formValidUser.enableValidation(validationConfig, validationConfig.formSelector)
 
 formInputCard.addEventListener('submit', submitAddCardForm);
 
