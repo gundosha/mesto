@@ -1,29 +1,34 @@
+import Popup from "./Popup.js";
+import PopupWithImage from './PopupWithImage.js'
+
 class Card {
-    constructor(selector, openPopup, name, imageLink) {
+    constructor(selector, { handleCardClick }, name, imageLink) {
         this._name = name;
         this._imageLink = imageLink;
-        this._openPopup = openPopup;
+        this._handleCardClick = handleCardClick;
         this._selector = selector;
+        this._handleCardClick = handleCardClick;
     }
 
     _getTemplate() {
-        return document
-            .querySelector(this._selector)
-            .content
-            .querySelector('.element')
-            .cloneNode(true);
+            return document
+                .querySelector(this._selector)
+                .content
+                .querySelector('.element')
+                .cloneNode(true);
 
-    }
+        }
+        // _openCard(title, link) {
+        //     const popupImage = document.querySelector('.popup_type_image');
+        //     const popupTxt = document.querySelector('.popup__text');
+        //     const bgImage = document.querySelector('.popup__image');
+        //     this._handleCardClick(title, link)
+        //     popupTxt.textContent = title;
+        //     bgImage.src = link;
+        //     bgImage.alt = title
+        // }
 
-    _openCard(title, link) {
-        const popupImage = document.querySelector('.popup_type_image');
-        const popupTxt = document.querySelector('.popup__text');
-        const bgImage = document.querySelector('.popup__image');
-        this._openPopup(popupImage)
-        popupTxt.textContent = title;
-        bgImage.src = link;
-        bgImage.alt = title
-    }
+
 
     _setEventListeners(_name, _imageLink) {
         this._element.querySelector('.element__container-like').addEventListener('click', (evt) => {
@@ -33,9 +38,9 @@ class Card {
         this._element.querySelector('.element__delete-image').addEventListener('click', (evt) => {
             evt.target.closest('.element').remove();
         });
-
+        this._elementImage = this._element.querySelector('.element__image');
         this._elementImage.addEventListener('click', () => {
-            this._openCard(_name, _imageLink)
+            this._handleCardClick(_name, _imageLink)
         })
     }
 

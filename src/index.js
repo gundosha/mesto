@@ -1,7 +1,15 @@
-import initialCards from "./initialCards.js";
+import "../pages/index.css"; // добавьте импорт главного файла стилей 
+// теперь картинки можно импортировать,
+// вебпак добавит в переменные правильные пути
+
+import initialCards from "./initial-cards.js";
 import Card from "./Card.js";
 import FormValidator from "./FormValidator.js";
-
+import Section from "./Section.js";
+import Popup from "./Popup.js";
+import PopupWithImage from "./PopupWithImage.js";
+import PopupWithForm from "./PopupWithForm.js";
+import UserInfo from "./UserInfo.js";
 const popup = document.querySelector('.popup');
 const popupEdit = document.querySelector('.popup_type_edit')
 const popupClose = document.querySelector('.popup__close');
@@ -10,8 +18,6 @@ const elements = document.querySelector('.elements');
 const elTemplate = document.querySelector('.element__template').content;
 const profileName = document.querySelector('.profile__title');
 const profileJob = document.querySelector('.profile__subtitle');
-const jobInput = document.querySelector('.popup__input_type_subtitle');
-const nameInput = document.querySelector('.popup__input_type_title');
 const formInput = document.querySelector('.popup__form-input')
 const nameAddInput = profileName.textContent;
 const jobAddInput = profileJob.textContent;
@@ -30,6 +36,19 @@ const popupTypeCard = document.querySelector('.popup_type_card')
 const popupTypeImage = document.querySelector('.popup_type_image')
 const escKey = 27;
 const ButtonElementCreate = document.querySelector('.popup__button_create')
+const elImage = document.querySelector('.element__image')
+const elText = document.querySelector('.element__title')
+const jobInput = document.querySelector('.popup__input_type_subtitle');
+const nameInput = document.querySelector('.popup__input_type_title');
+
+const inputUser = {
+    name: nameAddInput,
+    job: jobAddInput
+}
+
+
+
+
 
 const validationConfig = {
     formSelector: '.popup__form',
@@ -45,54 +64,64 @@ function generateCard(template, onPopup, name, link) {
     return newCards.createCard(name, link)
 }
 
-initialCards.forEach(function(element) {
-    const elCard = generateCard('.element__template', openPopup, element.name, element.link);
-    elements.append(elCard);
+const PopupByImage = new PopupWithImage(popupTypeImage, '.popup__image', '.popup__text');
 
-});
+
+const openPopupImage = {
+    handleCardClick: (title, link) => {
+        PopupByImage.open(title, link)
+    }
+}
+
+
+
+const SectionCard = new Section({
+    items: initialCards,
+    renderer: (item) => {
+        const elCard = generateCard('.element__template', openPopupImage, item.name, item.link);
+        SectionCard.addItem(elCard)
+    }
+}, '.elements')
+SectionCard.render()
+
+// initialCards.forEach(function(element) {
+//     const openPopupImage = {
+//         handleCardClick: (title, link) => {
+//             PopupByImage.open(title, link)
+//         }
+//     }
+//     const elCard = generateCard('.element__template', openPopupImage, element.name, element.link);
+//     elements.append(elCard);
+
+// });
+
+
 
 function submitEditProfileForm(evt) {
     evt.preventDefault();
-    profileName.textContent = nameInput.value
-    profileJob.textContent = jobInput.value
+    const userCard = new UserInfo({
+        name: profileName,
+        job: profileJob
+    })
+    userCard.setUserInfo({ title: nameInput.value, work: jobInput.value })
+        // profileName.textContent = nameInput.value
+        // profileJob.textContent = jobInput.value
     closeEditPopup()
 
 };
 
-
-
-function closeByOverlayClick(evt) {
-    const popupOpened = document.querySelector('.popup_active');
-    if (evt.target === popupOpened) {
-        closePopup(popupOpened)
-    }
-}
-
-
-
-
-
-function closeByEscClick(evt) {
-    if (evt.key === 'Escape') {
-        const popupOpened = document.querySelector('.popup_active');
-        closePopup(popupOpened)
-    }
-
-}
-
-
 function openPopup(popup) {
-    popup.classList.add('popup_active');
-    document.addEventListener('click', closeByOverlayClick)
-    document.addEventListener('keydown', closeByEscClick)
+    const popupOp = new Popup(popup, popupClose)
+    popupOp.setEventListeners()
+    popupOp.open()
 
 
 }
 
 function closePopup(popup) {
-    popup.classList.remove('popup_active');
-    document.removeEventListener('click', closeByOverlayClick)
-    document.removeEventListener('keydown', closeByEscClick)
+    const popupEdit = new Popup(popup, popupClose)
+    popupEdit.setEventListeners()
+    popupEdit.close()
 }
 
 function openEditPopup() {
@@ -124,7 +153,7 @@ buttonClose.addEventListener('click', function() {
 
 function submitAddCardForm(evt) {
     evt.preventDefault();
-    const newCard = generateCard('.element__template', openPopup, popupCardName.value, popupCardLink.value);
+    const newCard = generateCard('.element__template', openPopupImage, popupCardName.value, popupCardLink.value);
     elements.prepend(newCard);
     const formValidDisable = new FormValidator(validationConfig, validationConfig.formSelector)
     formValidDisable.disableSubmitButton(ButtonElementCreate, validationConfig.inactiveButtonClass)
@@ -138,13 +167,18 @@ formValid.enableValidation(validationConfig, validationConfig.formSelector)
 const formValidUser = new FormValidator(validationConfig, formInput)
 formValidUser.enableValidation(validationConfig, validationConfig.formSelector)
 
-formInputCard.addEventListener('submit', submitAddCardForm);
+const PopupFormCard = new PopupWithForm(formInputCard, submitAddCardForm)
+const PopupFormUser = new PopupWithForm(formInput, submitEditProfileForm)
+PopupFormCard.setEventListeners()
+PopupFormUser.setEventListeners()
+
+// formInputCard.addEventListener('submit', submitAddCardForm);
 
 popupOpen.addEventListener('click', openEditPopup);
 
 popupClose.addEventListener('click', closeEditPopup);
 
-formInput.addEventListener('submit', submitEditProfileForm);
+// formInput.addEventListener('submit', submitEditProfileForm);
 
 popupCardClose.addEventListener('click', closePopupCard)
 
