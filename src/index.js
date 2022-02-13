@@ -2,7 +2,7 @@ import "../pages/index.css"; // добавьте импорт главного �
 // теперь картинки можно импортировать,
 // вебпак добавит в переменные правильные пути
 
-import initialCards from "./initial-cards.js";
+import initialCards from "./initialCards.js";
 import Card from "./Card.js";
 import FormValidator from "./FormValidator.js";
 import Section from "./Section.js";
