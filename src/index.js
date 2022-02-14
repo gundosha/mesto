@@ -11,13 +11,17 @@ import PopupWithImage from "./PopupWithImage.js";
 import PopupWithForm from "./PopupWithForm.js";
 import UserInfo from "./UserInfo.js";
 import {
+    popupClose,
     popupOpen,
+    elements,
     profileName,
     profileJob,
     formInput,
     nameAddInput,
     jobAddInput,
+    buttonClose,
     popupAdd,
+    popupCardClose,
     popupCardName,
     popupCardLink,
     formInputCard,
