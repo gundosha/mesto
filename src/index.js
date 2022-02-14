@@ -1,6 +1,4 @@
-import "../pages/index.css"; // добавьте импорт главного файла стилей 
-// теперь картинки можно импортировать,
-// вебпак добавит в переменные правильные пути
+import '../pages/index.css'
 
 import initialCards from "./initialCards.js";
 import Card from "./Card.js";
