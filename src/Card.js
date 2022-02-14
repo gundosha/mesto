@@ -1,6 +1,3 @@
-import Popup from "./Popup.js";
-import PopupWithImage from './PopupWithImage.js'
-
 class Card {
     constructor(selector, { handleCardClick }, name, imageLink) {
         this._name = name;
@@ -30,7 +27,7 @@ class Card {
 
 
 
-    _setEventListeners(_name, _imageLink) {
+    _setEventListeners() {
         this._element.querySelector('.element__container-like').addEventListener('click', (evt) => {
             evt.target.classList.toggle('element__container-like_black')
         });
@@ -40,18 +37,18 @@ class Card {
         });
         this._elementImage = this._element.querySelector('.element__image');
         this._elementImage.addEventListener('click', () => {
-            this._handleCardClick(_name, _imageLink)
+            this._handleCardClick(this._name, this._imageLink)
         })
     }
 
-    createCard(_name, _imageLink) {
+    createCard() {
 
         this._element = this._getTemplate();
         this._elementImage = this._element.querySelector('.element__image');
-        this._setEventListeners(_name, _imageLink)
-        this._element.querySelector('.element__title').textContent = _name;
-        this._elementImage.src = _imageLink
-        this._elementImage.alt = _name
+        this._setEventListeners()
+        this._element.querySelector('.element__title').textContent = this._name;
+        this._elementImage.src = this._imageLink
+        this._elementImage.alt = this._name
         return this._element
     }
 
