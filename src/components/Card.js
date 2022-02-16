@@ -8,23 +8,13 @@ class Card {
     }
 
     _getTemplate() {
-            return document
-                .querySelector(this._selector)
-                .content
-                .querySelector('.element')
-                .cloneNode(true);
+        return document
+            .querySelector(this._selector)
+            .content
+            .querySelector('.element')
+            .cloneNode(true);
 
-        }
-        // _openCard(title, link) {
-        //     const popupImage = document.querySelector('.popup_type_image');
-        //     const popupTxt = document.querySelector('.popup__text');
-        //     const bgImage = document.querySelector('.popup__image');
-        //     this._handleCardClick(title, link)
-        //     popupTxt.textContent = title;
-        //     bgImage.src = link;
-        //     bgImage.alt = title
-        // }
-
+    }
 
 
     _setEventListeners() {
@@ -35,7 +25,6 @@ class Card {
         this._element.querySelector('.element__delete-image').addEventListener('click', (evt) => {
             evt.target.closest('.element').remove();
         });
-        this._elementImage = this._element.querySelector('.element__image');
         this._elementImage.addEventListener('click', () => {
             this._handleCardClick(this._name, this._imageLink)
         })
