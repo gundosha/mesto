@@ -1,6 +1,6 @@
 import './index.css'
 
-import initialCards from "../components/initialCards.js";
+import initialCards from "../utils/initialCards.js";
 import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
 import Section from "../components/Section.js";
@@ -9,7 +9,7 @@ import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import UserInfo from "../components/UserInfo.js";
 import {
-    popupOpen,
+    profileOpenButton,
     popupAdd,
     validationConfig,
     inputSubtitle,
@@ -45,51 +45,51 @@ const userInfo = userCard.getUserInfo()
 // jobInput.value = jobAddInput;
 
 
-const formValid = new FormValidator(validationConfig, '.popup__form-card');
-formValid.enableValidation()
+const addFormValidator = new FormValidator(validationConfig, '.popup__form-card');
+addFormValidator.enableValidation()
 const formValidUser = new FormValidator(validationConfig, '.popup__form-input')
 formValidUser.enableValidation()
 
 // function submitEditProfileForm(data) {
 //     userCard.setUserInfo(data.title, data.subtitle)
-//     PopupFormUser.close()
+//     popupFormUser.close()
 
 // };
-const formValidDisable = new FormValidator(validationConfig, '.popup__form-card')
+// const formValidDisable = new FormValidator(validationConfig, '.popup__form-card')
 
 // function submitAddCardForm() {
 //     const newCard = generateCard('.element__template', openPopupImage, popupCardName.value, popupCardLink.value);
 //     sectionCard.prependItem(newCard);
-//     PopupFormCard.close()
+//     popupFormCard.close()
 //     formValidDisable.disableSubmitButton()
 // }
 
 
 
 
-const PopupFormCard = new PopupWithForm('.popup_type_card', (data => {
+const popupFormCard = new PopupWithForm('.popup_type_card', (data => {
     const newCard = generateCard('.element__template', openPopupImage, data.title, data.subtitle);
     sectionCard.prependItem(newCard);
-    PopupFormCard.close()
-    formValidDisable.disableSubmitButton()
+    popupFormCard.close()
+    addFormValidator.disableSubmitButton()
 }))
-const PopupFormUser = new PopupWithForm('.popup_type_edit', (data) => {
+const popupFormUser = new PopupWithForm('.popup_type_edit', (data) => {
     userCard.setUserInfo(data.title, data.subtitle);
-    PopupFormUser.close()
+    popupFormUser.close()
 })
-PopupFormCard.setEventListeners()
-PopupFormUser.setEventListeners()
+popupFormCard.setEventListeners()
+popupFormUser.setEventListeners()
 
 function openUserProfile() {
-    PopupFormUser.open()
+    popupFormUser.open()
     inputTitle.value = userInfo.name
     inputSubtitle.value = userInfo.job
 }
 
 function openCreateCard() {
-    PopupFormCard.open()
+    popupFormCard.open()
 }
 
-popupOpen.addEventListener('click', openUserProfile);
+profileOpenButton.addEventListener('click', openUserProfile);
 
 popupAdd.addEventListener('click', openCreateCard);

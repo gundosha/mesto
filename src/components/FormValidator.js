@@ -4,7 +4,7 @@ class FormValidator {
         this._formElement = document.querySelector(formElement);
         this._validConfig = validationConfig;
         this._inactiveButtonClass = validationConfig.inactiveButtonClass;
-        this._submitButtonSelector = this._formElement.querySelector(validationConfig.submitButtonSelector)
+        this._submitButton = this._formElement.querySelector(validationConfig.submitButtonSelector)
     }
 
     _showInputError = (inputElement, errorMessage) => {
@@ -30,14 +30,14 @@ class FormValidator {
     };
 
     disableSubmitButton = () => {
-        console.log(this._submitButtonSelector)
-        this._submitButtonSelector.classList.add(this._inactiveButtonClass);
-        this._submitButtonSelector.disabled = true;
+        console.log(this._submitButton)
+        this._submitButton.classList.add(this._inactiveButtonClass);
+        this._submitButton.disabled = true;
     }
 
     enableSubmitButton = () => {
-        this._submitButtonSelector.classList.remove(this._inactiveButtonClass);
-        this._submitButtonSelector.disabled = false;
+        this._submitButton.classList.remove(this._inactiveButtonClass);
+        this._submitButton.disabled = false;
     }
     _hasInvalidInput(inputList) {
         return inputList.some((inputElement) => {

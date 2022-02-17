@@ -1,4 +1,4 @@
-export const popupOpen = document.querySelector('.profile__edit-button');
+export const profileOpenButton = document.querySelector('.profile__edit-button');
 export const popupAdd = document.querySelector('.profile__add-button')
 export const inputTitle = document.querySelector('.popup__input_type_title')
 export const inputSubtitle = document.querySelector('.popup__input_type_subtitle')
